@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Informations from "./informationsSignUp";
 
 class Signupcomp extends Component {
   constructor() {
@@ -8,6 +9,8 @@ class Signupcomp extends Component {
       lastname: "",
       email: "",
       password: "",
+      submit: false,
+      signupTime: "",
     };
   }
 
@@ -29,15 +32,26 @@ class Signupcomp extends Component {
 
   handlesignup = (event) => {
     event.preventDefault();
-    alert(`Your UserName is ${this.state.firstname}, 
-            Your email is ${this.state.email},`);
+    const currentTime = new Date().toLocaleString();
+    this.setState({ submit: true, signupTime: currentTime });
   };
 
   render() {
+    if (this.state.submit) {
+      return (
+        <Informations 
+          firstname={this.state.firstname} 
+          lastname={this.state.lastname} 
+          email={this.state.email}
+          signupTime={this.state.signupTime}
+        />
+      );
+    }
+
     return (
       <div className="loginContainer">
         <form className="signup" onSubmit={this.handlesignup}>
-          <h2>signup</h2>
+          <h2>Signup</h2>
           <div>
             <input
               type="text"
@@ -45,24 +59,24 @@ class Signupcomp extends Component {
               onChange={this.handlefirstname}
               placeholder="First name"
               required
-            ></input>
+            />
             <input
               type="text"
               value={this.state.lastname}
               onChange={this.handlelastname}
-              placeholder="last name"
+              placeholder="Last name"
               required
-            ></input>
+            />
           </div>
 
           <div>
             <input
-              type="text"
+              type="email"
               value={this.state.email}
               onChange={this.handlemail}
               placeholder="Email"
               required
-            ></input>
+            />
           </div>
 
           <div>
@@ -70,13 +84,14 @@ class Signupcomp extends Component {
               type="password"
               value={this.state.password}
               onChange={this.handlePassword}
-              placeholder="password"
+              placeholder="Password"
               required
-            ></input>
+            />
           </div>
 
           <div className="buttonform">
-            <button type="submit">SignUp</button>
+            <button type="submit">Sign Up</button>
+            <button type="button" onClick={this.props.onToggleForm}>Sign In</button>
           </div>
         </form>
       </div>

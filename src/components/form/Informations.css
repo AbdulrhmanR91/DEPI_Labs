@@ -1,0 +1,27 @@
+body{
+        background-color: #F8EDED;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+.infoContainer{
+    width: 350px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    left: 550px;
+    top: 150px;
+    padding: 50px;
+    border: 4px #FF8225 solid;
+    border-radius: 20px;
+    box-shadow: 10px 10px #B43F3F;
+    padding: 10px;
+}
+h2{
+    color:#B43F3F;
+}
+
+.details{
+    font-size: 15px;
+    color:#FF8225;
+}

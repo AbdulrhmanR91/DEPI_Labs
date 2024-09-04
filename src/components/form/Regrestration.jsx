@@ -21,7 +21,7 @@ class Register extends Component {
         {this.state.showLogin ? (
           <RegrestrationComp onToggleForm={this.handleToggleForm} />
         ) : (
-          <Signupcomp />
+          <Signupcomp onToggleForm={this.handleToggleForm}/>
         )}
       </div>
     );

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
+import InformationsSignIn from "./informationSignIn";
 class RegrestrationComp extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
+      submit: false,
+      signinTime:"",
     };
   }
 
@@ -17,10 +19,25 @@ class RegrestrationComp extends Component {
     this.setState({ password: event.target.value });
   };
 
+  handlesignin = (event) => {
+    event.preventDefault();
+    const currentTime = new Date().toLocaleString();
+    this.setState({ submit: true, signinTime: currentTime });
+  };
+
   render() {
+    if (this.state.submit) {
+      return (
+        <InformationsSignIn 
+          email={this.state.email}
+          signinTime={this.state.signinTime}
+        />
+      );
+    }
+
     return (
       <div className="loginContainer">
-        <form className="Login">
+        <form className="Login"onSubmit={this.handlesignin}>
           <h2>Login</h2>
 
           <div>
