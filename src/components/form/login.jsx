@@ -3,6 +3,7 @@ import InformationsSignIn from "./informationSignIn";
 class RegrestrationComp extends Component {
   constructor() {
     super();
+    this.myRef = React.createRef();
     this.state = {
       email: "",
       password: "",
@@ -11,8 +12,15 @@ class RegrestrationComp extends Component {
     };
   }
 
+  componentDidMount(){
+    //console.log(this.myRef.current);
+    this.myRef.current.focus();
+
+  }
+
   handlemail = (event) => {
     this.setState({ email: event.target.value });
+
   };
 
   handlePassword = (event) => {
@@ -46,6 +54,7 @@ class RegrestrationComp extends Component {
               value={this.state.userName}
               onChange={this.handlemail}
               placeholder="Email"
+              ref = {this.myRef}
               required
             ></input>
           </div>

@@ -4,6 +4,7 @@ import Informations from "./informationsSignUp";
 class Signupcomp extends Component {
   constructor() {
     super();
+    this.myRef= React.createRef();
     this.state = {
       firstname: "",
       lastname: "",
@@ -11,7 +12,13 @@ class Signupcomp extends Component {
       password: "",
       submit: false,
       signupTime: "",
+      
     };
+  }
+
+  componentDidMount(){
+    //console.log(this.myRef.current);
+    this.myRef.current.focus();
   }
 
   handlefirstname = (event) => {
@@ -48,6 +55,8 @@ class Signupcomp extends Component {
       );
     }
 
+    
+
     return (
       <div className="loginContainer">
         <form className="signup" onSubmit={this.handlesignup}>
@@ -58,6 +67,7 @@ class Signupcomp extends Component {
               value={this.state.firstname}
               onChange={this.handlefirstname}
               placeholder="First name"
+              ref={this.myRef}
               required
             />
             <input
